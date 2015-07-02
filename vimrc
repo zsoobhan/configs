@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set encoding=utf-8
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -25,6 +26,8 @@ filetype plugin indent on    " required
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
+let NERDTreeIgnore = ['\.pyc$']
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :NERDTreeFind<CR>
 " -----End NERDTree-------------
@@ -34,6 +37,7 @@ map <C-b> :NERDTreeFind<CR>
 
 
 syntax on
+set synmaxcol=200
 set undofile
 set undodir=~/.vim/undo
 set undolevels=5000
@@ -112,11 +116,11 @@ map <Down> :echo "Use j instead of the Down Arrow!"<cr>
 
 highlight SignColumn ctermbg=black
 set updatetime=750
-"let g:gitgutter_sign_removed = '='
-"let g:gitgutter_sign_added = '+'
-"let g:gitgutter_sign_modified = '~'
-"let g:gitgutter_sign_removed_first_line = '^'
-"let g:gitgutter_sign_modified_removed = 'w'
+" let g:gitgutter_sign_removed = '='
+" let g:gitgutter_sign_added = '+'
+" let g:gitgutter_sign_modified = '~'
+" let g:gitgutter_sign_removed_first_line = '^'
+" let g:gitgutter_sign_modified_removed = 'w'
 
 " --------End Git Guttering ------------------------
 "
@@ -141,8 +145,8 @@ autocmd BufWrite .vimrc :call DeleteTrailingWS()
 
 
 
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
       let g:airline_symbols = {}
 endif
- let g:airline_symbols.space = "\ua0"
+let g:airline_symbols.space = "\ua0"

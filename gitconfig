@@ -63,8 +63,8 @@
  
 
 
-#[diff]
-#	tool = meld
+[diff]
+	tool = opendiff
 
 [grep]
         linenumber = true
