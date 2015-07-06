@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
@@ -56,7 +57,7 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
-set textwidth=9999999
+" set textwidth=9999999
 set wrap
 set ai " (autoindent)
 set si " (smart indent)
@@ -64,6 +65,7 @@ set nolist
 set number
 
 ab ip import ipdb; ipdb.set_trace()
+ab ipp import pytest;pytest.set_trace()
 ab ipt {% load debug_tags %} <CR> {% set_trace %}
 
 map 0 ^ " Remap VIM 0 to first non-blank character
@@ -95,9 +97,9 @@ nnoremap to  :tabnew<CR>
 
 " ------- Begin border control -----------------
 set cc=80
-hi ColorColumn ctermbg=black guibg=black
-highlight OverLength ctermbg=black guibg=#592929
-match OverLength /\%81v.\+/
+hi ColorColumn ctermbg=darkgrey guibg=darkgrey
+"highlight OverLength ctermbg=darkgrey guibg=#592929
+"match OverLength /\%81v.\+/
 " ------- End border control --------------------
 
 
