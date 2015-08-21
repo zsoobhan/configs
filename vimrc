@@ -15,7 +15,10 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
-Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'mbbill/undotree'
+Plugin 'rking/ag.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,6 +34,10 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeIgnore = ['\.pyc$']
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :NERDTreeFind<CR>
+map j gj
+map k gk
+
+let NERDSpaceDelims=1
 " -----End NERDTree-------------
 
 
@@ -67,6 +74,7 @@ set number
 ab ip import ipdb; ipdb.set_trace()
 ab ipp import pytest;pytest.set_trace()
 ab ipt {% load debug_tags %} <CR> {% set_trace %}
+ab ipu from pudb import set_trace; set_trace()
 
 map 0 ^ " Remap VIM 0 to first non-blank character
 
@@ -77,29 +85,25 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
-set pastetoggle=<F6>
 noremap <F2> :let @/ = "" <CR>  " clears seach
 noremap <F3> :SyntasticReset<CR>
 noremap <F4> :redraw!<CR>
 noremap <F5> :Gblame<CR>
 noremap <F7> <C-w>=
+set pastetoggle=<F6>
+noremap <F8> :call DeleteTrailingWS()<CR>
+noremap <F9> :UndotreeToggle<CR>
 
-nnoremap th  :tabfirst<CR>
-nnoremap tj  :tabnext<CR>
-nnoremap tk  :tabprev<CR>
-nnoremap tl  :tablast<CR>
-nnoremap tt  :tabedit<Space>
-nnoremap tn  :tabnext<Space>
-nnoremap tm  :tabm<Space>
-nnoremap td  :tabclose<CR>
-nnoremap tr  :tabs<CR>
-nnoremap to  :tabnew<CR>
 
 " ------- Begin border control -----------------
-set cc=80
+set cc=100
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 "highlight OverLength ctermbg=darkgrey guibg=#592929
 "match OverLength /\%81v.\+/
+"
+" highlight Trace ctermbg=red guibg=#592929
+" match Trace /import ipdb; ipdb\.set_trace()/
+" match Trace /set_trace()/
 " ------- End border control --------------------
 
 
@@ -128,7 +132,7 @@ set updatetime=750
 "
 " --------Begin syntastic ------------------------
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_python_flake8_args = "--max-complexity 10"
+let g:syntastic_python_flake8_args = "--max-complexity 10 --max-line-length=100"
 " --------End syntastic ------------------------
 
 
@@ -142,8 +146,8 @@ func! DeleteTrailingWS()
 endfunc
 
 autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.html :call DeleteTrailingWS()
 autocmd BufWrite *.tex :call DeleteTrailingWS()
-autocmd BufWrite .vimrc :call DeleteTrailingWS()
 
 
 
