@@ -35,7 +35,7 @@
 	mfh = merge FETCH_HEAD
 	fo = fetch origin
 	f = fetch --all
-        po = push origin
+        po = "!echo 'Ah push it' && git push origin && echo 'PUSH IT REAL GOOD'"
         g = grep
         ## logs ##
         h = log --pretty=format:'%Cred%h%Creset -%s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit

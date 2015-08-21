@@ -8,10 +8,10 @@ HISTFILESIZE=10000
 alias g='git'
 __git_complete g _git
 
-alias ls='ls -G'
-alias ll='ls -alFh'
-alias la='ls -A'
-alias l='ls -CFh'
+alias ls='ls -GF'
+alias ll='ls -Alh'
+alias la='ls -alh'
+alias l='ll'
 
 alias v='vim'
 alias ggg='git checkout master'
@@ -26,7 +26,19 @@ alias devin='cd ~/Dev/dev-tools && vagrant ssh'
 alias clean='find . -name "*.pyc" -delete'
 
 source /usr/local/bin/virtualenvwrapper.sh
+alias ddd='eval "$(boot2docker shellinit)"'
 
+
+# clean python files
+pyclean () {
+        find . -type f -name "*.py[co]" -delete
+        find . -type d -name "__pycache__" -delete
+}
+
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
 
 # Run twolfson/sexy-bash-prompt
 . ~/.bash_prompt
