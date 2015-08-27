@@ -1,13 +1,13 @@
 [user]
-	name = Ziyad Soobhan
-	email = zsoobhan@gmail.com
+    name = Ziyad Soobhan
+    email = zsoobhan@gmail.com
 
 [core]
-	editor = vim
+    editor = vim
 
 [color]
     status = auto
-	ui = true
+    ui = true
 
 [color "branch"]
     current = green bold
@@ -27,45 +27,48 @@
     untracked = red
 
 [alias]
-        ## basic ##
-	ss = status	
-        s = status -sb 
-        co = checkout
-        cm = commit
-	mfh = merge FETCH_HEAD
-	fo = fetch origin
-	f = fetch --all
-        po = "!echo 'Ah push it' && git push origin && echo 'PUSH IT REAL GOOD'"
-        g = grep
-        ## logs ##
-        h = log --pretty=format:'%Cred%h%Creset -%s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit
-	l = log --graph
-        #ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-        ll = log --pretty=format:'%Cred%h%Creset -%s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit --decorate --numstat
-	dl = log -p
-        ## diffs ##
-	d = diff
-        dd = difftool -d
-        dw = diff --word-diff
-	## branch ##
-        b = branch
-        ba = branch --all
-        bm = branch --merged
-        bnm = branch --no-merged
-        bb = "!git log --pretty=format:'%d' | sed '/^$/d' | tac"
-        cob = checkout -b
-        m = merge --no-commit
-        ## advanced ##        
-        # list branches sorted by date modified
-        br = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
-        # list aliases
-        la = "!git config -l | grep alias | cut -c 7-"
+    ## basic ##
+    ss = status 
+    s = status -sb 
+    co = checkout
+    cm = commit
+    mfh = merge FETCH_HEAD
+    fo = fetch origin
+    f = fetch --all
+    po = "!echo 'Ah push it' && git push origin && echo 'PUSH IT REAL GOOD'"
+    g = grep
+
+    ## logs ##
+    h = log --pretty=format:'%Cred%h%Creset -%s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit
+    l = log --graph
+    #ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ll = log --pretty=format:'%Cred%h%Creset -%s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit --decorate --numstat
+    dl = log -p
+    ## diffs ##
+    d = diff
+    dd = difftool -d
+    dw = diff --word-diff
+    uu = "!git pull origin `git rev-parse --abbrev-ref HEAD`"
+
+    ## branch ##
+    b = branch
+    ba = branch --all
+    bm = branch --merged
+    bnm = branch --no-merged
+    bb = "!git log --pretty=format:'%d' | sed '/^$/d' | tac"
+    cob = checkout -b
+    m = merge --no-commit
+    ## advanced ##        
+    # list branches sorted by date modified
+    br = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
 
 [diff]
-	tool = opendiff
+    tool = opendiff
 
 [grep]
         linenumber = true
 
 [push]
-	default = current
+    default = current
