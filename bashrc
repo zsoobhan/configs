@@ -17,7 +17,7 @@ alias v='vim'
 alias ggg='git checkout master'
 alias fff='git fetch origin'
 alias mmm='git fetch origin master && git merge FETCH_HEAD'
-alias lo='ifconfig | grep "192"'
+alias lo='ifconfig | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"'
 alias conf='cd ~/personal/configs && vim'
 
 alias devon='cd ~/Dev/dev-tools'
@@ -39,6 +39,10 @@ pyclean () {
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
+
+# Go Lang
+export GOPATH=$HOME/work
+export PATH=$PATH:$GOPATH/bin
 
 # Run twolfson/sexy-bash-prompt
 . ~/.bash_prompt
