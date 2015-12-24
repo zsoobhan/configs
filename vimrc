@@ -2,6 +2,15 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set encoding=utf-8
 
+" colorscheme badwolf  
+" let g:badwolf_darkgutter = 1
+" let g:badwolf_css_props_highlight = 1
+" let g:badwolf_tabline = 2
+
+" colorscheme pychimp
+" colorscheme relaxedgreen
+" colorscheme marklar
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -25,6 +34,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
+
+set wildmenu
+set incsearch
 
 " ------Begin NERDTree----------
 autocmd StdinReadPre * let s:std_in=1
@@ -136,14 +148,10 @@ let g:syntastic_python_flake8_args = "--max-complexity 10 --max-line-length=100"
 " --------End syntastic ------------------------
 
 
-
-
 " Delete trailing white space on save
 func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
+    %s/\s\+$//e
+endfunction
 
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.html :call DeleteTrailingWS()

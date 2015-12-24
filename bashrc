@@ -25,6 +25,8 @@ alias devup='cd ~/Dev/dev-tools && vagrant up'
 alias devin='cd ~/Dev/dev-tools && vagrant ssh'
 alias clean='find . -name "*.pyc" -delete'
 
+eval $(thefuck --alias)
+
 source /usr/local/bin/virtualenvwrapper.sh
 alias ddd='eval "$(boot2docker shellinit)"'
 
