@@ -15,7 +15,6 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
-" Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mbbill/undotree'
 Plugin 'rking/ag.vim'
@@ -41,7 +40,7 @@ let NERDSpaceDelims=1
 " -----End NERDTree-------------
 
 
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 
 
 syntax on
@@ -64,19 +63,27 @@ set shiftwidth=4
 set smarttab
 set expandtab
 
-" set textwidth=9999999
 set wrap
 set ai " (autoindent)
 set si " (smart indent)
 set nolist
 set number
 
+
+" the set_trace() highlighting needs another look at
 ab ip import ipdb; ipdb.set_trace()
 ab ipp import pytest;pytest.set_trace()
 ab ipt {% load debug_tags %} <CR> {% set_trace %}
 ab ipu from pudb import set_trace; set_trace()
 
-map 0 ^ " Remap VIM 0 to first non-blank character
+highlight Trace ctermfg=white ctermbg=red
+match Trace /set_trace()/
+" autocmd Syntax * syn match Trace /\s\+$\| \+\ze\t/ containedin=ALL
+autocmd syntax match Trace /\s\+$\| \+\ze\t/ containedin=ALL
+
+let mapleader="\\"
+set wildmenu
+set incsearch
 
 vnoremap <C-c> "+y
 
@@ -89,28 +96,23 @@ noremap <F2> :let @/ = "" <CR>  " clears seach
 noremap <F3> :SyntasticReset<CR>
 noremap <F4> :redraw!<CR>
 noremap <F5> :Gblame<CR>
-noremap <F7> <C-w>=
 set pastetoggle=<F6>
-noremap <F8> :call DeleteTrailingWS()<CR>
-noremap <F9> :UndotreeToggle<CR>
+noremap <F7> :lnext<CR>
+noremap <F8> :lprevious<CR>
+noremap <F9> <C-w>=
 
 
 " ------- Begin border control -----------------
-set cc=100
+set cc=80
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
-"highlight OverLength ctermbg=darkgrey guibg=#592929
-"match OverLength /\%81v.\+/
-"
-" highlight Trace ctermbg=red guibg=#592929
-" match Trace /import ipdb; ipdb\.set_trace()/
-" match Trace /set_trace()/
+"highlight overlength ctermbg=darkgrey guibg=#592929
+"match overlength /\%81v.\+/
 " ------- End border control --------------------
 
 
 " Visual mode pressing * or # searches for the currently highlighted text
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 " ARROW KEYS ARE UNACCEPTABLE
 map <Left> :echo "Use h instead of the Left Arrow!"<cr>
@@ -132,7 +134,11 @@ set updatetime=750
 "
 " --------Begin syntastic ------------------------
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_python_flake8_args = "--max-complexity 10 --max-line-length=100"
+let g:syntastic_python_flake8_args = "--max-complexity 10"
+let g:syntastic_python_checkers=['flake8',]
+let g:syntastic_css_checkers=['csslint',]
+" let g:syntastic_javascript_checkers=['flow',]
+
 " --------End syntastic ------------------------
 
 
@@ -148,7 +154,8 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.html :call DeleteTrailingWS()
 autocmd BufWrite *.tex :call DeleteTrailingWS()
-
+autocmd BufWrite *.md :call DeleteTrailingWS()
+autocmd BufWrite *.js :call DeleteTrailingWS()
 
 
 let g:airline_powerline_fonts = 1
@@ -156,3 +163,4 @@ if !exists('g:airline_symbols')
       let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+let g:syntastic_always_populate_loc_list=1

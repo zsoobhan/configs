@@ -3,46 +3,44 @@ if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-comple
  . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
 fi
 
+
+
+source /usr/share/bash-completion/completions/git
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+
 HISTSIZE=5000
 HISTFILESIZE=10000
-alias g='git'
-__git_complete g _git
 
-alias ls='ls -GF'
+alias g='git'
+__git_complete g __git_main
+
+
+alias ls='ls -bF --color'
 alias ll='ls -Alh'
-alias la='ls -alh'
 alias l='ll'
+alias la='ls -alh'
+alias sl='sl -ae'
 
 alias v='vim'
 alias ggg='git checkout master'
 alias fff='git fetch origin'
 alias mmm='git fetch origin master && git merge FETCH_HEAD'
 alias lo='ifconfig | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"'
-alias conf='cd ~/personal/configs && vim'
+alias conf='cd ~/Development/configs && vim'
 
 alias devon='cd ~/Dev/dev-tools'
 alias devup='cd ~/Dev/dev-tools && vagrant up'
 alias devin='cd ~/Dev/dev-tools && vagrant ssh'
 alias clean='find . -name "*.pyc" -delete'
 
-source /usr/local/bin/virtualenvwrapper.sh
-alias ddd='eval "$(boot2docker shellinit)"'
 
+eval $(thefuck --alias)
 
 # clean python files
 pyclean () {
         find . -type f -name "*.py[co]" -delete
         find . -type d -name "__pycache__" -delete
-}
-
-
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
-
-# Go Lang
-export GOPATH=$HOME/work
-export PATH=$PATH:$GOPATH/bin
-
-# Run twolfson/sexy-bash-prompt
-. ~/.bash_prompt
+} 
