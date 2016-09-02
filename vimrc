@@ -2,14 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set encoding=utf-8
 
-" colorscheme badwolf  
-" let g:badwolf_darkgutter = 1
-" let g:badwolf_css_props_highlight = 1
-" let g:badwolf_tabline = 2
-
-" colorscheme pychimp
-" colorscheme relaxedgreen
-" colorscheme marklar
+colorscheme lanox
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -28,6 +21,7 @@ Plugin 'bling/vim-airline'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mbbill/undotree'
 Plugin 'rking/ag.vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -139,9 +133,11 @@ set updatetime=750
 " let g:gitgutter_sign_modified = '~'
 " let g:gitgutter_sign_removed_first_line = '^'
 " let g:gitgutter_sign_modified_removed = 'w'
-
+" let g:badwolf_darkgutter = 1
+" let g:badwolf_css_props_highlight = 1
+" let g:badwolf_tabline = 2
 " --------End Git Guttering ------------------------
-"
+
 " --------Begin syntastic ------------------------
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_python_flake8_args = "--max-complexity 10 --max-line-length=100"

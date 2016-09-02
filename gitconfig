@@ -4,6 +4,7 @@
 
 [core]
     editor = vim
+    pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
 
 [color]
     status = auto
@@ -35,7 +36,7 @@
     mfh = merge FETCH_HEAD
     fo = fetch origin
     f = fetch --all
-    po = "!echo 'Ah push it' && git push origin && echo 'PUSH IT REAL GOOD'"
+    po = push origin
     g = grep
 
     ## logs ##
@@ -68,7 +69,13 @@
     tool = opendiff
 
 [grep]
-        linenumber = true
+    linenumber = true
 
 [push]
     default = current
+
+
+# [pager]
+#     log = diff-highlight | less
+#     show = diff-highlight | less
+#     diff = diff-highlight | less
