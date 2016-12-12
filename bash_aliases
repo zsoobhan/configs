@@ -5,12 +5,16 @@ alias mmm='git fetch origin master && git merge FETCH_HEAD'
 alias lo='ifconfig | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"'
 alias conf='cd ~/Development/configs && vim'
 
-alias devon='cd ~/vagrant-boxes/panbox-python'
-alias devup='cd ~/vagrant-boxes/panbox-python && vagrant up'
-alias devin='cd ~/vagrant-boxes/panbox-python && vagrant ssh'
+alias g='git'
+alias ls='ls -GF'
+alias ll='ls -Alh'
+alias la='ls -alh'
+alias l='ll'
 
 
-eval $(thefuck --alias)
+alias clean='find . -name "*.pyc" -delete'
+
+
 
 # clean python files
 pyclean () {

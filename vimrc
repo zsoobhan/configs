@@ -37,13 +37,14 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :NERDTreeFind<CR>
 map j gj
 map k gk
 
 let NERDSpaceDelims=1
+let NERDDefaultAlign='left'
 " -----End NERDTree-------------
 
 
@@ -102,10 +103,10 @@ noremap <F9> :UndotreeToggle<CR>
 
 
 " ------- Begin border control -----------------
-set cc=100
+set cc=80
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
-"highlight OverLength ctermbg=darkgrey guibg=#592929
-"match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=darkgrey guibg=#592929
+" match OverLength /\%81v.\+/
 "
 " highlight Trace ctermbg=red guibg=#592929
 " match Trace /import ipdb; ipdb\.set_trace()/
