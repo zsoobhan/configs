@@ -12,10 +12,6 @@ alias la='ls -alh'
 alias l='ll'
 
 
-alias clean='find . -name "*.pyc" -delete'
-
-
-
 # clean python files
 pyclean () {
         find . -type f -name "*.py[co]" -delete

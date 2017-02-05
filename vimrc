@@ -17,10 +17,8 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
-" Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mbbill/undotree'
-Plugin 'rking/ag.vim'
+" Plugin 'rking/ag.vim'
 Plugin 'editorconfig/editorconfig-vim'
 
 " All of your Plugins must be added before the following line
@@ -48,7 +46,7 @@ let NERDDefaultAlign='left'
 " -----End NERDTree-------------
 
 
-"set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 
 syntax on
@@ -83,10 +81,6 @@ ab ipp import pytest;pytest.set_trace()
 ab ipt {% load debug_tags %} <CR> {% set_trace %}
 ab ipu from pudb import set_trace; set_trace()
 
-map 0 ^ " Remap VIM 0 to first non-blank character
-
-vnoremap <C-c> "+y
-
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
@@ -94,9 +88,7 @@ noremap <C-h> <C-w>h
 
 noremap <F2> :let @/ = "" <CR>  " clears seach
 noremap <F3> :SyntasticReset<CR>
-noremap <F4> :redraw!<CR>
 noremap <F5> :Gblame<CR>
-noremap <F7> <C-w>=
 set pastetoggle=<F6>
 noremap <F8> :call DeleteTrailingWS()<CR>
 noremap <F9> :UndotreeToggle<CR>
@@ -119,7 +111,6 @@ hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
-" ARROW KEYS ARE UNACCEPTABLE
 map <Left> :echo "Use h instead of the Left Arrow!"<cr>
 map <Right> :echo "Use l instead of the Right Arrow!"<cr>
 map <Up> :echo "Use k instead of the Up Arrow!"<cr>
@@ -141,7 +132,11 @@ set updatetime=750
 
 " --------Begin syntastic ------------------------
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_python_flake8_args = "--max-complexity 10 --max-line-length=100"
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+let g:syntastic_python_flake8_exec = '/usr/local/bin/flake8'
+let g:syntastic_python_flake8_args = "--max-complexity 10"
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl', 'podchecker']
 " --------End syntastic ------------------------
 
 
