@@ -11,15 +11,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'mbbill/undotree'
-" Plugin 'rking/ag.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,6 +44,12 @@ let NERDSpaceDelims=1
 let NERDDefaultAlign='left'
 " -----End NERDTree-------------
 
+" -----Begin worp ale-------------
+let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
+let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
+let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
+" let g:ale_python_pylint_options = '-rcfile /path/to/pylint.rc'
+" -----End worp ale-------------
 
 " set clipboard=unnamedplus
 
@@ -78,8 +83,6 @@ set number
 
 ab ip import ipdb; ipdb.set_trace()
 ab ipp import pytest;pytest.set_trace()
-ab ipt {% load debug_tags %} <CR> {% set_trace %}
-ab ipu from pudb import set_trace; set_trace()
 
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -87,7 +90,6 @@ noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
 noremap <F2> :let @/ = "" <CR>  " clears seach
-noremap <F3> :SyntasticReset<CR>
 noremap <F5> :Gblame<CR>
 set pastetoggle=<F6>
 noremap <F8> :call DeleteTrailingWS()<CR>
@@ -99,10 +101,6 @@ set cc=80
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 " highlight OverLength ctermbg=darkgrey guibg=#592929
 " match OverLength /\%81v.\+/
-"
-" highlight Trace ctermbg=red guibg=#592929
-" match Trace /import ipdb; ipdb\.set_trace()/
-" match Trace /set_trace()/
 " ------- End border control --------------------
 
 
@@ -129,16 +127,6 @@ set updatetime=750
 " let g:badwolf_css_props_highlight = 1
 " let g:badwolf_tabline = 2
 " --------End Git Guttering ------------------------
-
-" --------Begin syntastic ------------------------
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
-let g:syntastic_python_flake8_exec = '/usr/local/bin/flake8'
-let g:syntastic_python_flake8_args = "--max-complexity 10"
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_checkers = ['perl', 'podchecker']
-" --------End syntastic ------------------------
-
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
