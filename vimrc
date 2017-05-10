@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 set encoding=utf-8
 
 colorscheme lanox
@@ -7,60 +7,36 @@ colorscheme lanox
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
-Plugin 'mbbill/undotree'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'w0rp/ale'
+Plugin 'fisadev/vim-isort'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mindriot101/vim-yapf'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 
+call vundle#end()
+
+filetype plugin indent on
+syntax on
 set wildmenu
 set incsearch
+" set cursorline
 
-" ------Begin NERDTree----------
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeShowHidden=1
-let NERDTreeShowLineNumbers=1
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-map <C-n> :NERDTreeToggle<CR>
-map <C-b> :NERDTreeFind<CR>
-map j gj
-map k gk
-
-let NERDSpaceDelims=1
-let NERDDefaultAlign='left'
-" -----End NERDTree-------------
-
-" -----Begin worp ale-------------
-let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
-let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
-let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
-" let g:ale_python_pylint_options = '-rcfile /path/to/pylint.rc'
-" -----End worp ale-------------
-
-" set clipboard=unnamedplus
-
-
-syntax on
 set synmaxcol=200
 set undofile
 set undodir=~/.vim/undo
 set undolevels=5000
 
+set backup
 set backupdir=~/.vim/backup/
+set writebackup
 set directory=~/.vim/swap/
 set smartindent
 set autoread
@@ -80,10 +56,15 @@ set ai " (autoindent)
 set si " (smart indent)
 set nolist
 set number
+set laststatus=2  " always show status line -- `:help 'laststatus'`
+
+map j gj
+map k gk
 
 ab ip import ipdb; ipdb.set_trace()
 ab ipp import pytest;pytest.set_trace()
 
+" maps for navigating splits
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
@@ -94,6 +75,7 @@ noremap <F5> :Gblame<CR>
 set pastetoggle=<F6>
 noremap <F8> :call DeleteTrailingWS()<CR>
 noremap <F9> :UndotreeToggle<CR>
+" set shellcmdflag=-ic  " makes the vim shell source bashrc i.e. !<aliased-command>
 
 
 " ------- Begin border control -----------------
@@ -118,12 +100,7 @@ map <Down> :echo "Use j instead of the Down Arrow!"<cr>
 
 highlight SignColumn ctermbg=black
 set updatetime=750
-" let g:gitgutter_sign_removed = '='
-" let g:gitgutter_sign_added = '+'
-" let g:gitgutter_sign_modified = '~'
-" let g:gitgutter_sign_removed_first_line = '^'
-" let g:gitgutter_sign_modified_removed = 'w'
-" let g:badwolf_darkgutter = 1
+let g:badwolf_darkgutter = 1
 " let g:badwolf_css_props_highlight = 1
 " let g:badwolf_tabline = 2
 " --------End Git Guttering ------------------------
@@ -137,10 +114,33 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.html :call DeleteTrailingWS()
 autocmd BufWrite *.tex :call DeleteTrailingWS()
 
+" ------Begin NERDTree----------
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+map <C-n> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeFind<CR>
+
+let NERDSpaceDelims=1
+let NERDDefaultAlign='left'
+" -----End NERDTree-------------
+
+" -----Begin worp ale-------------
+let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
+let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
+let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
+" let g:ale_python_pylint_options = '-rcfile /path/to/pylint.rc'
+let g:ale_linters = {
+\   'perl': ['perl'],
+\}
+" -----End worp ale-------------
 
 
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
+" let g:airline_powerline_fonts = 1
+" if !exists('g:airline_symbols')
+"       let g:airline_symbols = {}
+" endif
+" let g:airline_symbols.space = "\ua0"
+let g:airline_theme='dark'
