@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/zsoobhan/.oh-my-zsh
+export ZSH=/home/zsoobhan/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -54,7 +54,6 @@ ZSH_THEME="zsoobhan"
 plugins=(git docker docker-compose virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.bash_profile
 
 # User configuration
 
@@ -84,5 +83,6 @@ source $HOME/.bash_profile
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+. ~/.bash_aliases

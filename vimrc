@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 set encoding=utf-8
 
-colorscheme lanox
+" colorscheme lanox
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
