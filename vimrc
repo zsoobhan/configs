@@ -19,6 +19,7 @@ Plugin 'w0rp/ale'
 Plugin 'fisadev/vim-isort'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mindriot101/vim-yapf'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 
 call vundle#end()
@@ -28,6 +29,7 @@ syntax on
 set wildmenu
 set incsearch
 " set cursorline
+set clipboard=unnamedplus
 
 set synmaxcol=200
 set undofile
@@ -63,6 +65,7 @@ map k gk
 
 ab ip import ipdb; ipdb.set_trace()
 ab ipp import pytest;pytest.set_trace()
+ab ippp import pdb; pdb.set_trace()
 
 " maps for navigating splits
 noremap <C-j> <C-w>j
@@ -75,7 +78,6 @@ noremap <F5> :Gblame<CR>
 set pastetoggle=<F6>
 noremap <F8> :call DeleteTrailingWS()<CR>
 noremap <F9> :UndotreeToggle<CR>
-" set shellcmdflag=-ic  " makes the vim shell source bashrc i.e. !<aliased-command>
 
 
 " ------- Begin border control -----------------
@@ -90,11 +92,6 @@ hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
-
-map <Left> :echo "Use h instead of the Left Arrow!"<cr>
-map <Right> :echo "Use l instead of the Right Arrow!"<cr>
-map <Up> :echo "Use k instead of the Up Arrow!"<cr>
-map <Down> :echo "Use j instead of the Down Arrow!"<cr>
 
 " --------Begin Git Guttering ------------------------
 
@@ -128,19 +125,14 @@ let NERDDefaultAlign='left'
 " -----End NERDTree-------------
 
 " -----Begin worp ale-------------
-let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
+let g:ale_python_flake8_executable = 'python'   " or 'python' for Python 2
 let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
-let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
+let g:ale_python_pylint_executable = 'python'   " or 'python' for Python 2
 " let g:ale_python_pylint_options = '-rcfile /path/to/pylint.rc'
 let g:ale_linters = {
-\   'perl': ['perl'],
+\   'javascript': ['jshint'],
 \}
 " -----End worp ale-------------
 
 
-" let g:airline_powerline_fonts = 1
-" if !exists('g:airline_symbols')
-"       let g:airline_symbols = {}
-" endif
-" let g:airline_symbols.space = "\ua0"
-let g:airline_theme='dark'
+let g:airline_powerline_fonts = 1

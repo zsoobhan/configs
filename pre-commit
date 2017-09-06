@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pdb_check=$(git grep -E -n 'import i?pdb|set_trace\(\)')
+pdb_check=$(git grep -E -n 'import i?pdb|set_trace\(\)' -- '*.py')
 
 if [ ${#pdb_check} -gt 0 ]
 then

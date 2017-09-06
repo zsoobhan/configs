@@ -6,7 +6,7 @@ alias lo='ifconfig | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"'
 alias conf='cd ~/Development/configs && vim'
 
 alias g='git'
-alias ls='ls -GF'
+alias ls='ls -GF --color'
 alias ll='ls -Alh'
 alias la='ls -alh'
 alias l='ll'

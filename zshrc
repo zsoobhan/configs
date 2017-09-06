@@ -51,7 +51,7 @@ ZSH_THEME="zsoobhan"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose virtualenvwrapper)
+plugins=(git docker docker-compose )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,4 +85,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-. ~/.bash_aliases
+source ~/.bash_aliases
