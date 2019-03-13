@@ -7,9 +7,12 @@ rvm_current() {
 rbenv_version() {
   rbenv version 2>/dev/null | awk '{print $1}'
 }
+    
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
 
-PROMPT='[%{$fg_bold[red]%}%*%{$reset_color%}] %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info)
+PROMPT='${ret_status} [%{$fg_bold[red]%}%*%{$reset_color%}] %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info)
 %# '
+
 
 # Must use Powerline font, for \uE0A0 to render.
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}\uE0A0 "

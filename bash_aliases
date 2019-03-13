@@ -3,7 +3,8 @@ alias ggg='git checkout master'
 alias fff='git fetch origin'
 alias mmm='git fetch origin master && git merge FETCH_HEAD'
 alias lo='ifconfig | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"'
-alias conf='cd ~/Development/configs && vim'
+alias conf='cd ~/Development/configs && vim && cd -'
+alias gol='cd $GOPATH/src/github.com/JSainsburyPLC/gol-services'
 
 alias g='git'
 alias ls='ls -GF'
@@ -31,3 +32,8 @@ ss () {
 }
 
 alias sss="osascript -e 'tell application \"Spotify\" to name of current track as string'"
+
+notify(){
+    var="$1"
+    osascript -e 'display notification "$1" with title "Terminal"';
+}

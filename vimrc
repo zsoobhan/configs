@@ -19,6 +19,9 @@ Plugin 'w0rp/ale'
 Plugin 'fisadev/vim-isort'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mindriot101/vim-yapf'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'seeamkhan/robotframework-vim'
+" Plugin 'kristijanhusak/vim-carbon-now-sh'
 
 
 call vundle#end()
@@ -63,6 +66,7 @@ map k gk
 
 ab ip import ipdb; ipdb.set_trace()
 ab ipp import pytest;pytest.set_trace()
+ab ippp import pdb;pdb.set_trace()
 
 " maps for navigating splits
 noremap <C-j> <C-w>j
@@ -79,7 +83,7 @@ noremap <F9> :UndotreeToggle<CR>
 
 
 " ------- Begin border control -----------------
-set cc=80
+set cc=120
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 " highlight OverLength ctermbg=darkgrey guibg=#592929
 " match OverLength /\%81v.\+/
@@ -129,7 +133,8 @@ let NERDDefaultAlign='left'
 
 " -----Begin worp ale-------------
 let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
-let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
+" let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
+let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 '
 let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
 " let g:ale_python_pylint_options = '-rcfile /path/to/pylint.rc'
 let g:ale_linters = {
