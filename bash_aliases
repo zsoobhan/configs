@@ -6,12 +6,17 @@ alias lo='ifconfig | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"'
 alias conf='cd ~/Development/configs && vim && cd -'
 alias gol='cd $GOPATH/src/github.com/JSainsburyPLC/gol-services'
 
+alias cdv='cd ~/Development/sainsburys/gol-voice'
+alias cdd='cd ~/Development/sainsburys/gol-voice/docker && docker-compose up'
+alias vv='cd ~/Development/sainsburys/gol-voice && vim'
+
 alias g='git'
 alias ls='ls -GF'
 alias ll='ls -Alh'
 alias la='ls -alh'
 alias l='ll'
 alias bb='brew update -v && brew outdated'
+
 
 
 # clean python files

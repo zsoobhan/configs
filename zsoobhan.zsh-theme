@@ -7,10 +7,15 @@ rvm_current() {
 rbenv_version() {
   rbenv version 2>/dev/null | awk '{print $1}'
 }
+
+battery_stat(){
+  echo "\u21AF`pmset -g batt | sed 1d | cut -d';' -f1 | cut -f2`%"
+}
+
     
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
 
-PROMPT='${ret_status} [%{$fg_bold[red]%}%*%{$reset_color%}] %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info)
+PROMPT='${ret_status} [%{$fg_bold[red]%}%*%{$reset_color%}] %{$fg_bold[yellow]%}$(battery_stat)%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info)
 %# '
 
 

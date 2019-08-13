@@ -20,7 +20,7 @@ Plugin 'fisadev/vim-isort'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mindriot101/vim-yapf'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'seeamkhan/robotframework-vim'
+" Plugin 'seeamkhan/robotframework-vim'
 " Plugin 'kristijanhusak/vim-carbon-now-sh'
 
 
@@ -137,9 +137,9 @@ let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
 let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 '
 let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
 " let g:ale_python_pylint_options = '-rcfile /path/to/pylint.rc'
-let g:ale_linters = {
-\   'perl': ['perl'],
-\}
+" let g:ale_linters = {
+" \   'perl': ['perl'],
+" \}
 " -----End worp ale-------------
 
 
