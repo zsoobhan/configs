@@ -2,3 +2,4 @@
 based_on_style = pep8
 split_before_logical_operator = true
 DEDENT_CLOSING_BRACKETS = true
+COLUMN_LIMIT = 120

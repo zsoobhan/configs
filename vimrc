@@ -93,21 +93,15 @@ hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 " Visual mode pressing * or # searches for the currently highlighted text
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 map <Left> :echo "Use h instead of the Left Arrow!"<cr>
 map <Right> :echo "Use l instead of the Right Arrow!"<cr>
 map <Up> :echo "Use k instead of the Up Arrow!"<cr>
 map <Down> :echo "Use j instead of the Down Arrow!"<cr>
 
-" --------Begin Git Guttering ------------------------
-
 highlight SignColumn ctermbg=black
 set updatetime=750
 let g:badwolf_darkgutter = 1
-" let g:badwolf_css_props_highlight = 1
-" let g:badwolf_tabline = 2
-" --------End Git Guttering ------------------------
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
@@ -132,10 +126,10 @@ let NERDDefaultAlign='left'
 " -----End NERDTree-------------
 
 " -----Begin worp ale-------------
-let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
+" let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
 " let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
 let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 '
-let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
+" let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
 " let g:ale_python_pylint_options = '-rcfile /path/to/pylint.rc'
 " let g:ale_linters = {
 " \   'perl': ['perl'],
@@ -149,3 +143,4 @@ let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
 " endif
 " let g:airline_symbols.space = "\ua0"
 let g:airline_theme='dark'
+let vim_isort_python_version='python3'

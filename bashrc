@@ -7,7 +7,7 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 
 
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then

@@ -51,7 +51,7 @@ ZSH_THEME="zsoobhan"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose virtualenvwrapper osx)
+plugins=(git docker docker-compose macos virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.bash_profile
@@ -88,4 +88,4 @@ source $HOME/.bash_profile
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/sbin:$PATH"
 export LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib"
-
+eval "$(/opt/homebrew/bin/brew shellenv)"

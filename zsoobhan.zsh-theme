@@ -9,7 +9,7 @@ rbenv_version() {
 }
 
 battery_stat(){
-  echo "\u21AF`pmset -g batt | sed 1d | cut -d';' -f1 | cut -f2`%"
+  echo "\u21AF`pmset -g batt | grep -Eo "\d+%" | cut -d% -f1`%%"
 }
 
     
