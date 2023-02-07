@@ -15,11 +15,13 @@ Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 Plugin 'fisadev/vim-isort'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mindriot101/vim-yapf'
 Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'godlygeek/tabular'
+" Plugin 'plasticboy/vim-markdown'
 " Plugin 'seeamkhan/robotframework-vim'
 " Plugin 'kristijanhusak/vim-carbon-now-sh'
 
@@ -61,6 +63,8 @@ set nolist
 set number
 set laststatus=2  " always show status line -- `:help 'laststatus'`
 
+set list
+set listchars=trail:•,tab:‣-⦾
 map j gj
 map k gk
 
@@ -75,7 +79,7 @@ noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
 noremap <F2> :let @/ = "" <CR>  " clears seach
-noremap <F5> :Gblame<CR>
+noremap <F5> :Git blame<CR>
 set pastetoggle=<F6>
 noremap <F8> :call DeleteTrailingWS()<CR>
 noremap <F9> :UndotreeToggle<CR>
@@ -93,15 +97,21 @@ hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 " Visual mode pressing * or # searches for the currently highlighted text
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 map <Left> :echo "Use h instead of the Left Arrow!"<cr>
 map <Right> :echo "Use l instead of the Right Arrow!"<cr>
 map <Up> :echo "Use k instead of the Up Arrow!"<cr>
 map <Down> :echo "Use j instead of the Down Arrow!"<cr>
 
+" --------Begin Git Guttering ------------------------
+
 highlight SignColumn ctermbg=black
 set updatetime=750
 let g:badwolf_darkgutter = 1
+" let g:badwolf_css_props_highlight = 1
+" let g:badwolf_tabline = 2
+" --------End Git Guttering ------------------------
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
@@ -111,6 +121,7 @@ endfunction
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.html :call DeleteTrailingWS()
 autocmd BufWrite *.tex :call DeleteTrailingWS()
+autocmd BufWrite *.md :call DeleteTrailingWS()
 
 " ------Begin NERDTree----------
 autocmd StdinReadPre * let s:std_in=1
@@ -129,18 +140,22 @@ let NERDDefaultAlign='left'
 " let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
 " let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
 let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 '
-" let g:ale_python_pylint_executable = 'python3'   " or 'python' for Python 2
-" let g:ale_python_pylint_options = '-rcfile /path/to/pylint.rc'
-" let g:ale_linters = {
-" \   'perl': ['perl'],
-" \}
+let g:ale_fixers = {'python': ['black']}
+let g:ale_linters = {'python': ['mypy', 'flake8', 'pyflakes']}
 " -----End worp ale-------------
 
 
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 " if !exists('g:airline_symbols')
 "       let g:airline_symbols = {}
 " endif
 " let g:airline_symbols.space = "\ua0"
 let g:airline_theme='dark'
-let vim_isort_python_version='python3'
+
+
+" -- begin markdown plugins
+" let g:vim_markdown_folding_disabled = 1
+" let g:vim_markdown_override_foldtext = 0
+" let g:vim_markdown_no_default_key_mappings = 1
+
+" -- end markdown plugins

@@ -4,11 +4,8 @@ alias fff='git fetch origin'
 alias mmm='git fetch origin master && git merge FETCH_HEAD'
 alias lo='ifconfig | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"'
 alias conf='cd ~/Development/configs && vim && cd -'
-alias gol='cd $GOPATH/src/github.com/JSainsburyPLC/gol-services'
 
-alias cdv='cd ~/Development/sainsburys/gol-voice'
-alias cdd='cd ~/Development/sainsburys/gol-voice/docker && docker-compose up'
-alias vv='cd ~/Development/sainsburys/gol-voice && vim'
+alias ff='isort . && black . && flake8 .'
 
 alias g='git'
 alias ls='ls -GF'
@@ -41,4 +38,17 @@ alias sss="osascript -e 'tell application \"Spotify\" to name of current track a
 notify(){
     var="$1"
     osascript -e 'display notification "$1" with title "Terminal"';
+}
+
+clean_json () {
+    echo cleaning $1
+    cat $1 | jq > /tmp/foo.json
+    mv /tmp/foo.json $1
+}
+
+clean_all_json () {
+    for F_NAME in `find . -name "*.json"`
+    do
+        clean_json $F_NAME
+    done
 }

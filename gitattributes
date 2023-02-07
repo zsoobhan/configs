@@ -1,0 +1,6 @@
+*.css   diff=css
+*.html  diff=html
+*.xhtml diff=html
+*.go    diff=golang
+*.py    diff=python
+*.md    diff=markdown
