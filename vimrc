@@ -20,11 +20,6 @@ Plugin 'fisadev/vim-isort'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mindriot101/vim-yapf'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
-" Plugin 'seeamkhan/robotframework-vim'
-" Plugin 'kristijanhusak/vim-carbon-now-sh'
-
 
 call vundle#end()
 
@@ -78,7 +73,8 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
-noremap <F2> :let @/ = "" <CR>  " clears seach
+" noremap <F2> :let @/ = "" <CR>  " clears seach
+noremap <F2> :noh <CR>  " clears seach
 noremap <F5> :Git blame<CR>
 set pastetoggle=<F6>
 noremap <F8> :call DeleteTrailingWS()<CR>
@@ -87,8 +83,8 @@ noremap <F9> :UndotreeToggle<CR>
 
 
 " ------- Begin border control -----------------
-set cc=120
-hi ColorColumn ctermbg=darkgrey guibg=darkgrey
+" set cc=120
+" hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 " highlight OverLength ctermbg=darkgrey guibg=#592929
 " match OverLength /\%81v.\+/
 " ------- End border control --------------------
@@ -137,11 +133,12 @@ let NERDDefaultAlign='left'
 " -----End NERDTree-------------
 
 " -----Begin worp ale-------------
-" let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
-" let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 --max-line-length=100'
 let g:ale_python_flake8_args = '-m flake8 --max-complexity 10 '
 let g:ale_fixers = {'python': ['black']}
-let g:ale_linters = {'python': ['mypy', 'flake8', 'pyflakes']}
+" let g:ale_linters = {'python': ['ruff', 'mypy', 'flake8', 'pyflakes']}
+let g:ale_linters = {'python': ['ruff', 'mypy', 'pyflakes']}
+let g:ale_virtualtext_cursor = 0  " removes errors as inline commentd
+let g:airline#extensions#ale#enabled = 1  " forces linting errors to show in the status line
 " -----End worp ale-------------
 
 
@@ -151,11 +148,4 @@ let g:airline_powerline_fonts = 1
 " endif
 " let g:airline_symbols.space = "\ua0"
 let g:airline_theme='dark'
-
-
-" -- begin markdown plugins
-" let g:vim_markdown_folding_disabled = 1
-" let g:vim_markdown_override_foldtext = 0
-" let g:vim_markdown_no_default_key_mappings = 1
-
-" -- end markdown plugins
+" let g:airline#extensions#tabline#enabled = 1

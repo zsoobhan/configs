@@ -52,3 +52,28 @@ clean_all_json () {
         clean_json $F_NAME
     done
 }
+
+# Sainsbury's Proxy settings
+proxy_on() {
+  export HTTP_PROXY=http://a-proxy-p.bc.jsplc.net:8080
+  export HTTPS_PROXY=http://a-proxy-p.bc.jsplc.net:8080
+  export NO_PROXY=localhost,127.0.0.1,.dev,.internal,.local,.jsplc.net,.jstest1.net,.jstest2.net,.jstest3.net,.devjsplc.net,.jhblkf.jsgrp,.blk.js.com,.ishapay.net,.iphapay.net,.client.secure-payment-processing.com,.client.test-secure-payment-processing.com
+  # Some tools want the variables in lowercase
+  export http_proxy=$HTTP_PROXY
+  export https_proxy=$HTTPS_PROXY
+  export no_proxy=$NO_PROXY
+}
+
+proxy_off() {
+  unset http_proxy
+  unset https_proxy
+  unset no_proxy
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset NO_PROXY
+  unset VAGRANT_HTTP_PROXY
+  unset VAGRANT_HTTPS_PROXY
+  unset VAGRANT_APT_PROXY
+  unset VAGRANT_GIT_PROXY
+  unset VAGRANT_NO_PROXY
+}

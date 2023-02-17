@@ -1,6 +1,6 @@
 [user]
     name = Ziyad Soobhan
-    email = zsoobhan@gmail.com
+    email = ziyad.soobhan@dae.mn
 
 [core]
     editor = vim
@@ -10,6 +10,8 @@
     status = auto
     ui = auto
 
+[url "ssh://git@github.com/"]
+   insteadOf = https://github.com/
 
 [alias]
     ## basic ##
@@ -64,3 +66,6 @@
 
 [diff]
     wsErrorHighlight = all
+
+[commit]
+    verbose = true
