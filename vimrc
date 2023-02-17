@@ -20,11 +20,6 @@ Plugin 'fisadev/vim-isort'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mindriot101/vim-yapf'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
-" Plugin 'seeamkhan/robotframework-vim'
-" Plugin 'kristijanhusak/vim-carbon-now-sh'
-
 
 call vundle#end()
 
@@ -151,11 +146,3 @@ let g:airline_powerline_fonts = 1
 " endif
 " let g:airline_symbols.space = "\ua0"
 let g:airline_theme='dark'
-
-
-" -- begin markdown plugins
-" let g:vim_markdown_folding_disabled = 1
-" let g:vim_markdown_override_foldtext = 0
-" let g:vim_markdown_no_default_key_mappings = 1
-
-" -- end markdown plugins
