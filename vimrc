@@ -2,7 +2,9 @@ set nocompatible
 filetype off
 set encoding=utf-8
 
-colorscheme lanox
+" colorscheme lanox
+" highlight SignColumn ctermbg=black
+highlight clear SignColumn
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -106,7 +108,6 @@ map <Down> :echo "Use j instead of the Down Arrow!"<cr>
 
 " --------Begin Git Guttering ------------------------
 
-highlight SignColumn ctermbg=black
 set updatetime=750
 let g:badwolf_darkgutter = 1
 " let g:badwolf_css_props_highlight = 1
@@ -146,9 +147,9 @@ let g:ale_linters = {'python': ['mypy', 'flake8', 'pyflakes']}
 
 
 let g:airline_powerline_fonts = 1
-" if !exists('g:airline_symbols')
-"       let g:airline_symbols = {}
-" endif
+if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+endif
 " let g:airline_symbols.space = "\ua0"
 let g:airline_theme='dark'
 
@@ -159,3 +160,6 @@ let g:airline_theme='dark'
 " let g:vim_markdown_no_default_key_mappings = 1
 
 " -- end markdown plugins
+"
+let g:ale_virtualtext_cursor = 0  " removes errors as inline commentd
+let g:airline#extensions#ale#enabled = 1  " forces linting errors to show in the status line
